@@ -1,6 +1,7 @@
 package com.example.fast.repository;
 
 import com.example.fast.FastApplicationTests;
+import com.example.fast.model.entity.Item;
 import com.example.fast.model.entity.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -35,20 +36,23 @@ public class UserRepositoryTest extends FastApplicationTests {
     }
 
     @Test
+    @Transactional
     public void read() {
 
         // select * from user where id = ?
-        Optional<User> user = userRepository.findById(2L); //findById(8L)
+//        Optional<User> user = userRepository.findById(4L);
+        Optional<User> user = userRepository.findByAccount("TestUser03");
 
         user.ifPresent(selectUser -> {
-            System.out.println("user = " + selectUser);
-            System.out.println("email : " + selectUser.getEmail());
+//            System.out.println("user = " + selectUser);
+//            System.out.println("email : " + selectUser.getEmail());
 //
-//            selectUser.getOrderDetailList().stream().forEach(detail -> {
-////                System.out.println(detail.getItemId());
-//                Item item = detail.getItem();
+            selectUser.getOrderDetailList().stream().forEach(detail -> {
+//                System.out.println(detail.getItemId());
+                Item item = detail.getItem();
+                System.out.println(item);
 //                System.out.println(detail.getItem());
-//            });
+            });
         });
 
     }
