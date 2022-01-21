@@ -3,6 +3,7 @@ package com.example.fast.model.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -12,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@ToString(exclude = {"orderDetailList", "partner"})
 public class Item {
 
     @Id
@@ -42,7 +44,16 @@ public class Item {
 
     private String updatedBy;
 
-    private Long partnerId;
+    // N (Item) : 1 (partner)
+    @ManyToOne
+//    private Long partnerId;
+    private Partner partner;
+
+    // 1 (Itme) : N (OrderDetail)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
+    private List<OrderDetail> orderDetailList;
+
+    /*
 
 //    // 1 (Item의 입장) : N (OrderDetail)
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
@@ -57,5 +68,7 @@ public class Item {
     // 연관관계 별 추천 타입
     // 1 : 1 = EAGER 타입 추천
     // 1 : N = LAZY 타입을 추천
+
+     */
 
 }
