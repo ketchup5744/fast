@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Entity
-@ToString(exclude = {"itemList"})
+@ToString(exclude = {"itemList", "category"})
 public class Partner {
 
     @Id
@@ -46,7 +46,10 @@ public class Partner {
 
     private String updatedBy;
 
-    private Long categoryId;
+    // N (Partner) : 1 (Category)
+    @ManyToOne
+//    private Long categoryId;
+    private Category category;
 
     // 1 (Partner) : N (Item)
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
