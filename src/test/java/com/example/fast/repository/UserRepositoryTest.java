@@ -53,6 +53,17 @@ public class UserRepositoryTest extends FastApplicationTests {
         user.setPhoneNumber(phoneNumber);
         user.setRegisteredAt(registeredAt);
 
+        /* 해당 생성자만 존재하는 객체가 만들어지는 것. = User Entity에 추가한 Lombok의 builder 어노테이션 효과
+
+        User u = User.builder()
+                .account(account)
+                .password(password)
+                .status(status)
+                .email(email)
+                .build();
+
+         */
+
         User newUser = userRepository.save(user);
         Assert.assertNotNull(newUser);
 
@@ -83,6 +94,18 @@ public class UserRepositoryTest extends FastApplicationTests {
          */
 
         User user = userRepository.findFirstByPhoneNumberOrderByIdDesc("010-1111-2222");
+
+        /* User Entity에 추가한 Lombok의 Accessors 어노테이션의 Chain 효과
+
+        user
+                .setEmail("")
+                .setPhoneNumber("")
+                .setStatus("");
+
+        User u = new User().setAccount("").setEmail("").setPassword("");
+
+         */
+
 
         if(user != null) {
             user.getOrderGroupList().stream().forEach(orderGroup -> {
