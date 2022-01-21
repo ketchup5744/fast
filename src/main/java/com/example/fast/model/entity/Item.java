@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -17,15 +18,33 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String status;
+
     private String name;
 
-    private Integer price;
+    private String title;
 
     private String content;
 
-    // 1 (Item의 입장) : N (OrderDetail)
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
-    private List<OrderDetail> orderDetailList;
+    private Integer price;
+
+    private String brandName;
+
+    private LocalDateTime registeredAt;
+
+    private LocalDateTime unregisteredAt;
+
+    private LocalDateTime createdAt;
+
+    private String createdBy;
+
+    private LocalDateTime updatedAt;
+
+    private String updatedBy;
+
+//    // 1 (Item의 입장) : N (OrderDetail)
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
+//    private List<OrderDetail> orderDetailList;
 
     // LAZY = 지연로딩 (필요한 데이터만 로딩), EAGER = 즉시로딩 (모든 데이터를 다 로딩, 데이터가 많을 시 느려짐)
     // LAZY = SELECT * FROM item where id = ?
