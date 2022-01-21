@@ -88,10 +88,18 @@ public class UserRepositoryTest extends FastApplicationTests {
 
         if(user != null) {
             user.getOrderGroupList().stream().forEach(orderGroup -> {
+                System.out.println("---------------주문묶음-------------");
                 System.out.println("수령인 : " + orderGroup.getRevName());
                 System.out.println("수령지 : " + orderGroup.getRevAddress());
                 System.out.println("총금액 : " + orderGroup.getTotalPrice());
                 System.out.println("총수량 : " + orderGroup.getTotalQuantity());
+
+                System.out.println("---------------주문상세-------------");
+
+                orderGroup.getOrderDetailList().forEach(orderDetail -> {
+                    System.out.println("주문의 상태 : " + orderDetail.getStatus());
+                    System.out.println("도착 예정 일자 : " + orderDetail.getArrivalDate());
+                });
             });
         }
         Assert.assertNotNull(user);
