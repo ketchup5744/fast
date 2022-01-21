@@ -3,6 +3,7 @@ package com.example.fast.repository;
 import com.example.fast.FastApplicationTests;
 import com.example.fast.model.entity.Item;
 import com.example.fast.model.entity.User;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,28 @@ public class UserRepositoryTest extends FastApplicationTests {
         System.out.println("newUser : " + newUser);
          */
 
+        String account = "Test01";
+        String password = "Test01";
+        String status = "REGISTERED";
+        String email = "Test01@gmail.com";
+        String phoneNumber = "010-1111-2222";
+        LocalDateTime registeredAt = LocalDateTime.now();
+        LocalDateTime createdAt = LocalDateTime.now();
+        String createdBy = "AdminServer";
+
+        User user = new User();
+        user.setAccount(account);
+        user.setPassword(password);
+        user.setStatus(status);
+        user.setEmail(email);
+        user.setPhoneNumber(phoneNumber);
+        user.setRegisteredAt(registeredAt);
+        user.setCreatedAt(createdAt);
+        user.setCreatedBy(createdBy);
+
+        User newUser = userRepository.save(user);
+        Assert.assertNotNull(newUser);
+
     }
 
     @Test
@@ -60,6 +83,9 @@ public class UserRepositoryTest extends FastApplicationTests {
         });
 
          */
+
+        User user = userRepository.findFirstByPhoneNumberOrderByIdDesc("010-1111-2222");
+        Assert.assertNotNull(user);
     }
 
     /* 사용자가 id를 입력하면 정보를 조회해주는 메소드 / 후에 Controller 에서 적용될 코드
