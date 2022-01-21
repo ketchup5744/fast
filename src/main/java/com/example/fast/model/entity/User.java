@@ -3,6 +3,7 @@ package com.example.fast.model.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -12,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity // ==table
+@ToString(exclude = {"orderGroup"})
 public class User {
 
     @Id
@@ -40,7 +42,7 @@ public class User {
 
     private String updatedBy;
 
-//    // 1 (User) : N (OrderDetail)
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user" /*OrderDetail에 있는 user*/)
-//    private List<OrderDetail> orderDetailList;
+    // 1 (User) : N (OrderGroup)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user" /*OrderGroup애 있는 user*/)
+    private List<OrderGroup> orderGroupList;
 }
