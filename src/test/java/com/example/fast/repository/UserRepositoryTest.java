@@ -20,6 +20,7 @@ public class UserRepositoryTest extends FastApplicationTests {
     @Test
     public void create() {
 
+        /*
         // String sql = insert into user (%s, %s , %d ) value (account, email, age);
         User user = new User();
 
@@ -32,12 +33,15 @@ public class UserRepositoryTest extends FastApplicationTests {
 
         User newUser = userRepository.save(user);
         System.out.println("newUser : " + newUser);
+         */
 
     }
 
     @Test
     @Transactional
     public void read() {
+
+        /*
 
         // select * from user where id = ?
 //        Optional<User> user = userRepository.findById(4L);
@@ -55,6 +59,7 @@ public class UserRepositoryTest extends FastApplicationTests {
             });
         });
 
+         */
     }
 
     /* 사용자가 id를 입력하면 정보를 조회해주는 메소드 / 후에 Controller 에서 적용될 코드
