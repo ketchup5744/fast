@@ -42,6 +42,8 @@ public class Item {
 
     private String updatedBy;
 
+    private Long partnerId;
+
 //    // 1 (Item의 입장) : N (OrderDetail)
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
 //    private List<OrderDetail> orderDetailList;
