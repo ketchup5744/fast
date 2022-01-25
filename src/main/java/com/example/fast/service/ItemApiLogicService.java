@@ -84,7 +84,6 @@ public class ItemApiLogicService implements CrudInterface<ItemApiRequest, ItemAp
                 .map(newEntityItem -> itemRepository.save(newEntityItem))
                 .map(item -> response(item))
                 .orElseGet(() -> Header.ERROR("데이터 없음"));
-
     }
 
     @Override
