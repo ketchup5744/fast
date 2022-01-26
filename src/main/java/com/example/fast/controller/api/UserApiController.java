@@ -2,6 +2,7 @@ package com.example.fast.controller.api;
 
 import com.example.fast.Ifs.CrudInterface;
 import com.example.fast.controller.CrudController;
+import com.example.fast.model.entity.User;
 import com.example.fast.model.network.Header;
 import com.example.fast.model.network.request.UserApiRequest;
 import com.example.fast.model.network.response.UserApiResponse;
@@ -15,17 +16,19 @@ import javax.annotation.PostConstruct;
 @Slf4j
 @RestController
 @RequestMapping("/api/user")
-public class UserApiController /*implements CrudInterface*/ extends CrudController<UserApiRequest, UserApiResponse> {
+public class UserApiController /*implements CrudInterface*/ extends CrudController<UserApiRequest, UserApiResponse, User> {
 
     @Autowired
     private UserApiLogicService userApiLogicService;
+
+    /*
 
     @PostConstruct
     public void init() {
         this.baseService = userApiLogicService;
     }
 
-    /*
+     */
 
     @Override
     @PostMapping("") // /api/user
@@ -53,6 +56,4 @@ public class UserApiController /*implements CrudInterface*/ extends CrudControll
         log.info("delete : {}", id);
         return userApiLogicService.delete(id);
     }
-
-     */
 }

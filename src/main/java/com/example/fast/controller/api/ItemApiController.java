@@ -2,6 +2,7 @@ package com.example.fast.controller.api;
 
 import com.example.fast.Ifs.CrudInterface;
 import com.example.fast.controller.CrudController;
+import com.example.fast.model.entity.Item;
 import com.example.fast.model.network.Header;
 import com.example.fast.model.network.request.ItemApiRequest;
 import com.example.fast.model.network.response.ItemApiResponse;
@@ -13,7 +14,9 @@ import javax.annotation.PostConstruct;
 
 @RestController
 @RequestMapping("/api/item")
-public class ItemApiController extends CrudController<ItemApiRequest, ItemApiResponse> {
+public class ItemApiController extends CrudController<ItemApiRequest, ItemApiResponse, Item> {
+
+    /*
 
     @Autowired
     private ItemApiLogicService itemApiLogicService;
@@ -23,6 +26,6 @@ public class ItemApiController extends CrudController<ItemApiRequest, ItemApiRes
         this.baseService = itemApiLogicService;
     }
 
-
+     */
 
 }
