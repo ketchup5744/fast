@@ -46,8 +46,17 @@ public class OrderGroupApiLogicService implements CrudInterface<OrderGroupApiReq
     }
 
     @Override
-    public Header<OrderGroupApiResponse> read(Long Id) {
-        return null;
+    public Header<OrderGroupApiResponse> read(Long id) {
+
+        return orderGroupRepository.findById(id)
+                // map = 데이터가 있는 경우
+//                .map(this::response) // 방법 1
+//                .map(orderGroup -> response(orderGroup)) // 방법 2
+                .map(orderGroup -> { // 방법 3
+                    return response(orderGroup);
+                })
+                .orElseGet(() -> Header.ERROR("데이터 없음")); // 데이터가 없는 경우
+
     }
 
     @Override
