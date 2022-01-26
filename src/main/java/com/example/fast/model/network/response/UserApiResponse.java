@@ -1,5 +1,6 @@
 package com.example.fast.model.network.response;
 
+import com.example.fast.model.enumclass.UserStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,7 +20,7 @@ public class UserApiResponse {
 
     private String password; // 암호화 처리 필요
 
-    private String status;
+    private UserStatus status;
 
     private String email;
 
