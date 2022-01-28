@@ -2,6 +2,7 @@ package com.example.fast.repository;
 
 import com.example.fast.FastApplicationTests;
 import com.example.fast.model.entity.OrderGroup;
+import com.example.fast.model.enumclass.OrderType;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class OrderGroupRepositoryTest extends FastApplicationTests {
         OrderGroup orderGroup = new OrderGroup();
 
         orderGroup.setStatus("COMPLETE");
-        orderGroup.setOrderType("ALL");
+        orderGroup.setOrderType(OrderType.ALL);
         orderGroup.setRevAddress("서울시 강남구");
         orderGroup.setRevName("홍길동");
         orderGroup.setPaymentType("CARD");

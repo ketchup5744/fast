@@ -6,12 +6,17 @@ import com.example.fast.model.entity.User;
 import com.example.fast.model.network.Header;
 import com.example.fast.model.network.request.UserApiRequest;
 import com.example.fast.model.network.response.UserApiResponse;
+import com.example.fast.model.network.response.UserOrderInfoApiResponse;
 import com.example.fast.service.UserApiLogicService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -21,14 +26,20 @@ public class UserApiController /*implements CrudInterface*/ extends CrudControll
     @Autowired
     private UserApiLogicService userApiLogicService;
 
-    /*
+    // 상세내역
+    @GetMapping("/{id}/orderInfo")
+    public Header<UserOrderInfoApiResponse> orderInfo(@PathVariable Long id) {
+        return userApiLogicService.orderInfo(id);
 
-    @PostConstruct
-    public void init() {
-        this.baseService = userApiLogicService;
     }
 
-     */
+    // 페이징 처리
+    // SELECT * FROM fast.user where 1=1 order by id limit 0, 15;
+    @GetMapping("")
+    public Header<List<UserApiResponse>> search(@PageableDefault(sort = "id", direction = Sort.Direction.ASC, size = 15) Pageable pageable) {
+        log.info("{}", pageable);
+        return userApiLogicService.search(pageable);
+    }
 
     @Override
     @PostMapping("") // /api/user
@@ -56,4 +67,14 @@ public class UserApiController /*implements CrudInterface*/ extends CrudControll
         log.info("delete : {}", id);
         return userApiLogicService.delete(id);
     }
+
+        /*
+
+    @PostConstruct
+    public void init() {
+        this.baseService = userApiLogicService;
+    }
+
+     */
+
 }

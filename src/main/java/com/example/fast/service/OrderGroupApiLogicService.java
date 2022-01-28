@@ -95,7 +95,7 @@ public class OrderGroupApiLogicService extends BaseService /* implements CrudInt
 
     }
 
-    private Header<OrderGroupApiResponse> response(OrderGroup orderGroup){
+    /*private*/ public Header<OrderGroupApiResponse> response(OrderGroup orderGroup){
 
         OrderGroupApiResponse body = OrderGroupApiResponse.builder()
                 .id(orderGroup.getId())

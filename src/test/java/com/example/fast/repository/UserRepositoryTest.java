@@ -3,6 +3,7 @@ package com.example.fast.repository;
 import com.example.fast.FastApplicationTests;
 import com.example.fast.model.entity.Item;
 import com.example.fast.model.entity.User;
+import com.example.fast.model.enumclass.UserStatus;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -38,7 +39,7 @@ public class UserRepositoryTest extends FastApplicationTests {
 
         String account = "Test03";
         String password = "Test03";
-        String status = "REGISTERED";
+        UserStatus status = UserStatus.REGISTERED;
         String email = "Test01@gmail.com";
         String phoneNumber = "010-1111-3333";
         LocalDateTime registeredAt = LocalDateTime.now();

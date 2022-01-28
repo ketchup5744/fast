@@ -94,7 +94,7 @@ public class ItemApiLogicService extends BaseService<ItemApiRequest, ItemApiResp
                 .orElseGet(() -> Header.ERROR("데이터 없음"));
     }
 
-    private Header<ItemApiResponse> response(Item item){
+    /*private*/ public Header<ItemApiResponse> response(Item item){
 
 //        String statusTitle = item.getStatus().getTitle(); // enum 타입의 타이틀을 보여주는 것
 

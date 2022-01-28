@@ -26,7 +26,7 @@ public class PartnerRepositoryTest extends FastApplicationTests {
         LocalDateTime registeredAt = LocalDateTime.now();
         LocalDateTime createdAt = LocalDateTime.now();
         String createdBy = "AdminServer";
-        Long categoryId = 1L;
+//        Long categoryId = 1L;
 
         Partner partner = new Partner();
         partner.setName(name);
